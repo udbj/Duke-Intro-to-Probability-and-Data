@@ -62,7 +62,6 @@ sleepObs %>% summarise(med = median(sleptim1),
 
 
 # visualise the distribution using histogram 
-x11()
 ggplot(data = sleepObs, aes(x = sleptim1)) + 
   geom_histogram(binwidth = 1) +
   xlab("Hours of sleep") +
@@ -70,7 +69,6 @@ ggplot(data = sleepObs, aes(x = sleptim1)) +
 # right skewed distribution
 
 # box plot for the data
-x11()
 ggplot(data = sleepObs, aes(y = sleptim1)) + 
   geom_boxplot(outlier.colour = "red") +
   ylab("Hours of sleep")
@@ -118,7 +116,6 @@ menhthProp <- menhthObs %>%
 print.data.frame(menhthProp)
 
 # plot average number of days with mental problems vs sleep
-x11()
 ggplot(data = menhthProp, aes(x = sleptim1, y = menhth_avg)) + 
   geom_line() + geom_point() +
   geom_rect(mapping = aes(xmin = 3, xmax = 11, ymin = -Inf, ymax = Inf), fill = "green", alpha = 0.005) +
@@ -164,7 +161,6 @@ depProp <- depObs %>%
 print.data.frame(depProp)
 
 # plot the proportion of depressive disorders according to sleep time
-x11()
 ggplot(data = depProp, aes(x = sleptim1, y = depr_pc)) + 
   geom_line() + geom_point() +
   geom_rect(mapping = aes(xmin = 3, xmax = 11, ymin = -Inf, ymax = Inf), fill = "green", alpha = 0.005) +
@@ -284,7 +280,6 @@ s100prop <- s100 %>% group_by(educa) %>%
 print.data.frame(s100prop)
 
 # visualise
-x11()
 ggplot(data = s100prop , aes(x = educa, y = smoke100_pc)) + 
   geom_col() +
   scale_x_discrete(labels = educa_labs) +
@@ -339,11 +334,11 @@ print.data.frame(sfrqProp)
 
 # visualisation
 
-long_sfrqProp <- sfrqProp %>% gather(key = freq, value = pc, evd_pc, smd_pc, noa_pc)
+long_sfrqProp <- sfrqProp %>% gather(key = freq, value = pc, 
+                                     evd_pc, smd_pc, noa_pc)
 #convert to long format
 
 
-x11()
 ggplot(data = long_sfrqProp, aes(x = educa, y = pc,  fill = freq)) + 
   geom_col() + scale_x_discrete(labels = educa_labs) +
   scale_y_continuous(labels = function(x) paste0(x,"%")) +
@@ -413,7 +408,6 @@ stopObs_prop <- stopObs %>%
 print.data.frame(stopObs_prop)
 
 # visualise
-x11()
 ggplot(data = stopObs_prop, aes(x = educa, y = stopped_pc)) +
   geom_col() + scale_x_discrete(labels = educa_labs) +
   scale_y_continuous(labels = function(x) paste0(x,"%")) +
@@ -493,7 +487,6 @@ long_lstsmkprp <- lastsmk_prop %>% gather(key = last_smk, value = pc,
                                           "-6m-", "-3m-", "-1m-", "nvr")
 
 
-x11()
 ggplot(data = long_lstsmkprp, aes(x = educa, y = pc,  fill = last_smk)) + 
   geom_col() + scale_x_discrete(labels = educa_labs) +
   scale_y_continuous(labels = function(x) paste0(x,"%")) +
@@ -539,7 +532,6 @@ print.data.frame(tobacoProp)
 # visualisation
 long_tobacoProp <- tobacoProp %>% gather(key = freq, value = pc, evry_pc, some_pc, noa_pc)
 
-x11()
 ggplot(data = long_tobacoProp, aes(x = educa, y = pc, fill = freq)) +
   geom_col() + scale_x_discrete(labels = educa_labs) +
   scale_y_continuous(labels = function(x) paste0(x,"%")) +
