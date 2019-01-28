@@ -8,7 +8,6 @@ names(nycflights) # view names of variables
 str(nycflights) # view structure/description of data frame
 
 # histogram showing departure delay times (minutes) on x-axis
-x11()
 ggplot(data = nycflights, aes(x = dep_delay)) + geom_histogram(binwidth = 150) 
 
 
@@ -17,7 +16,6 @@ rdu_flights <- nycflights %>% filter(dest == "RDU")
 # filter function takes in a comparison and outputs the appropriate entries 
 
 # plot delays in flights to RDU
-x11()
 ggplot(data = rdu_flights, aes(x = dep_delay)) + geom_histogram()
 
 # A numerical summary for this data can be obtained
@@ -32,7 +30,6 @@ dim(sfo_feb_flights)
 "68 flights were headed to SFO in February"
 
 # histogram to show arrival delays in sfo_feb_flights
-x11()
 ggplot(data = sfo_feb_flights, aes(x = arr_delay)) + geom_histogram()
 
 # summary statistics for sfo_feb_flights
@@ -61,7 +58,6 @@ nycflights %>%
 "highest average and median departure delays were in July"
 
 # visual comparison using side-by-side box plots
-x11()
 ggplot(nycflights, aes(x = factor(month), y = dep_delay)) + geom_boxplot()
 
 
@@ -77,7 +73,6 @@ nycflights %>%
 "LGA has the highest percentage of timely departures"
 
 # visualisation of dep_type using segmented bar plot
-x11()
 ggplot(data = nycflights, aes(x = origin, fill = dep_type)) + geom_bar()
 
 # average speed (mph) traveled by the plane for each flight
@@ -86,7 +81,6 @@ nycflights %>% arrange(desc(avg_speed)) %>% select(tailnum, avg_speed)
 "N666DN had the highest average speed."
 
 # scatterplot of average speed vs distance
-x11()
 ggplot(data = nycflights, aes(x = distance, y = avg_speed)) + geom_point()
 "There is an overall postive association between distance and average speed."
 
