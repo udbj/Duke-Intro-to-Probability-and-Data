@@ -19,7 +19,6 @@ arbuthnot$year
 range(arbuthnot$year)
 
 #simple plot of the number of girls baptized per year 
-x11()
 ggplot(data=arbuthnot,aes(x = year,y = girls)) + geom_point()
 #first arg = dataset, second arg = aesthetic elements i.e x and y axes
 #Addition (+) symbol is used to specify another layer. geom_point() generates a scatterplot.
@@ -41,14 +40,11 @@ arbuthnot
 # The function mutate() is in the dplyr package. It is used to do computations and add columns in data sets. Can be used with pipes.
 
 # line plot of total baptisms
-x11()
 ggplot(data = arbuthnot, aes(x = year, y = total)) + geom_line()
 #layers are simply added using +
-x11()
 ggplot(data = arbuthnot, aes(x = year, y = total)) + geom_line() + geom_point()
 
 # Exercise: Now, generate a plot of the proportion of boys born over time.
-x11()
 ggplot(data = arbuthnot, aes(x = year, y = boys)) + geom_line()
 
 # add a new column, which indicates if the number of boys was greater than girls for a particular year
