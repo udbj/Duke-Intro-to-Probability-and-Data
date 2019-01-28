@@ -14,7 +14,6 @@ kobe_streak <- calc_streak(kobe_basket$shot) # function in statsr to calculate s
 str(kobe_streak)
 
 # plot streak lengths on histogram
-x11()
 ggplot(data = kobe_streak,aes(x = length)) + geom_histogram(binwidth = 1)
 
 kobe_streak %>% summarise(median = median(kobe_streak$length), iqr = IQR(kobe_streak$length))
@@ -45,7 +44,6 @@ table(sim_basket)
 sim_streak <- calc_streak(sim_basket)
 
 # plotting simulated streak lengths
-x11()
 ggplot(data = sim_streak, aes(x = length)) + geom_histogram(binwidth = 1)
 
 "Typical streak length is 0. Longest streak is of six baskets."
